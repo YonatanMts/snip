@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+	    <property name="app.name">Snip</property>
+		<Property name="LOG_PATTERN">
+			%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n
+		</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${app.name} - ${LOG_PATTERN}" />
+		</Console>
+		<File name="File" fileName="${sys:user.home}/snip/snip.log">
+			<PatternLayout pattern="${app.name} - ${LOG_PATTERN}" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>
